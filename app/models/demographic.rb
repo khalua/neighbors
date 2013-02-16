@@ -22,5 +22,5 @@
 
 class Demographic < ActiveRecord::Base
   attr_accessible :state, :city, :household_income, :single_family_home, :single_males, :single_females, :median_age, :homes_with_kids, :owners, :renters, :latitude, :longitude, :binder_id
-  belongs_to  :binder
+  has_and_belongs_to_many  :binders
 end
