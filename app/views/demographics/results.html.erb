@@ -1,0 +1,29 @@
+<% if @state.present? && @city.present? %>
+
+State: <%= @state %><br>
+City: <%= @city %><br>
+Median Household Income: <%= number_to_currency(@medianHouseholdIncome) || "No data" %><br>
+Median Single Family Home: <%= number_to_currency(@medianSingleFamilyHome) || "No data"  %><br>
+Single Males: <%= number_to_percentage(@singleMales, :precision => 2) || "No data"  %><br>
+Single Females: <%= number_to_percentage(@singleFemales, :precision => 2) || "No data" %><br>
+Median Age: <%= @medianAge || "No data" %><br>
+Homes with kids:  <%= number_to_percentage(@homesWithKids, :precision => 2) || "No data"  %><br>
+Owners: <%= number_to_percentage(@owners, :precision => 2) || "No data"  %><br>
+Renters: <%= number_to_percentage(@renters, :precision => 2) || "No data"  %><br>
+
+<%= link_to("Map Link", @googleMapURL) %>
+
+
+
+<iframe width="425" height="350" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @latitude %>+<%= @longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @latitude %>,<%= @longitude %>&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=<%= @latitude %>+<%= @longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @latitude %>,<%= @longitude %>&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<% else %>
+  <h1>Sorry, not found.</h1>
+<% end %>
+
+
+  <% if @medianHouseholdIncome.present? %>
+
+
+    <%= button_tag %>
+  <% end %>

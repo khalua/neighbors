@@ -1,0 +1,28 @@
+#data from zillow
+
+state = data['demographics']['response']['region']['state']
+
+city = data['demographics']['response']['region']['city']
+
+neighborhood = data['demographics']['response']['region']['neighborhood']
+
+latitude = data['demographics']['response']['region']['latitude']
+
+longitude = data['demographics']['response']['region']['longitude']
+
+medianHouseholdIncome = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][0]['values']['neighborhood']['value']['__content__']
+
+singleMales = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][1]['values']['neighborhood']['value']['__content__']
+
+singleFemales = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][2]['values']['neighborhood']['value']['__content__']
+
+medianAge = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['neighborhood']['value']['__content__']
+
+homesWithKids = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][4]['values']['neighborhood']['value']['__content__']
+
+averageHouseholdSize = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][5]['values']['neighborhood']['value']['__content__']
+
+averageCommuteTime = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][6]['values']['neighborhood']['value']['__content__']
+
+
+
