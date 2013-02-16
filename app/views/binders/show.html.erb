@@ -1,1 +1,12 @@
-<%= @binder.name %>
+Binder name: <%= @binder.name %><br>
+Binder description: <%= @binder.description %><br>
+
+<%= link_to 'Edit', edit_binder_path(@binder) %>
+<hr>
+
+<% Demographic.all.each do |data| %>
+  <%= data.state %><br>
+  <%= data.city %><br>
+  <%= number_to_currency(data.household_income, :precision => 0) %><br>
+
+<% end %>

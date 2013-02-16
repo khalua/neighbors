@@ -1,0 +1,7 @@
+<%= form_for @binder do |f| %>
+  <%= f.text_field :name, :autofocus => true %>
+  <%= f.label :name %><br>
+  <%= f.text_field :description %>
+  <%= f.label :description %>
+  <%= f.submit %>
+<% end %>

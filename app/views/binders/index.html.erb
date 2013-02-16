@@ -1,0 +1,4 @@
+<% @binders.each do |binder| %>
+  Binder name:<%= link_to(binder.name, binder) %><br>
+  Description: <%= binder.description %>
+<% end %>

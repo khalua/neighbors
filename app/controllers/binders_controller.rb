@@ -15,4 +15,20 @@ class BindersController < ApplicationController
   def show
     @binder = Binder.find(params[:id])
   end
+
+  def edit
+    @binder = Binder.find(params[:id])
+  end
+
+  def update
+    binder = Binder.find(params[:id])
+    binder.update_attributes(params[:binder])
+    redirect_to(binder)
+  end
+
+  def destroy
+    binder = Binder.find(params[:id])
+    binder.delete
+    redirect_to(binders_path)
+  end
 end

@@ -1,1 +1,14 @@
-<%= @demographic.city %>
+State: <%= @demographic.state %><br>
+City:  <%= @demographic.city %><br>
+Avg household income: <%= number_to_currency(@demographic.household_income, :precision => 0) %><br>
+Avg single family home value:  <%= number_to_currency(@demographic.single_family_home, :precision => 0) %><br>
+Single Males: <%= number_to_percentage(@demographic.single_males, :precision => 2) %><br>
+Single Females:  <%= number_to_percentage(@demographic.single_females, :precision => 2) %><br>
+Median Age: <%= @demographic.median_age %><br>
+Homes with kids:  <%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %><br>
+Owners: <%= number_to_percentage(@demographic.owners, :precision => 2) %><br>
+Renters: <%= number_to_percentage(@demographic.renters, :precision => 2)  %><br>
+
+
+
+

@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <nav>
+      <%= link_to("Home", root_path) %>
+      <%= link_to("Cached cities", demographics_path ) %>
+      <%= link_to("View binders", binders_path ) %>
+    </nav>
+  </header>
 
 <%= yield %>
 
