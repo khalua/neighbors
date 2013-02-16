@@ -20,54 +20,35 @@ class DemographicsController < ApplicationController
   end
 
   def query
-    state = params[:state].upcase.split.join
+    state = params[:state].capitalize.split.join
     city = params[:city].capitalize.split.join
     key = ENV['ZILLOW']
 
     if Demographic.where(:state => state, :city => city).exists?
-      @demographics = Demographic.find(:state => state, :city => city)
+      @demographic = Demographic.where(:state => state, :city => city)
+      binding.pry
+    else
+      data = HTTParty.get("http://www.zillow.com/webservice/GetDemographics.htm?zws-id=#{key}&state=#{state}&city=#{city}").parsed_response
 
-      else
-        @demographics = { }
+      @demographic = Hash.new
+      @demographic["state"] = data['demographics']['response']['region']['state']
+      @demographic["city"] = data['demographics']['response']['region']['city']
+      @demographic["latitude"] = data['demographics']['response']['region']['latitude'].to_f
+      @demographic["longitude"] = data['demographics']['response']['region']['longitude'].to_f
+      @demographic["medianHouseholdIncome"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_i
+      @demographic["medianSingleFamilyHome"] = data['demographics']['response']['pages']['page'][0]['tables']['table']['data']['attribute'][1]['values']['city']['value']['__content__'].to_i
+      @demographic["singleFemales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][2]['values']['city']['value']['__content__'].to_f * 100
+      @demographic["singleMales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
+      @demographic["homesWithKids"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][4]['values']['city']['value']['__content__'].to_f * 100
+      @demographic["owners"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_f * 100
+      @demographic["renters"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
+      @demographic["medianAge"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['city']['value'].to_i
+    #binding.pry
 
-    data = HTTParty.get("http://www.zillow.com/webservice/GetDemographics.htm?zws-id=#{key}&state=#{state}&city=#{city}").parsed_response
+      @googleMapURL = "https://maps.google.com/maps?q=#{@demographic["latitude"]}+#{@demographic["longitude"]}+(#{@demographic["city"]})"
 
-
-        begin
-          @state = data['demographics']['response']['region']['state']
-          @city = data['demographics']['response']['region']['city']
-          @latitude = data['demographics']['response']['region']['latitude']
-          @longitude = data['demographics']['response']['region']['longitude']
-
-          @medianHouseholdIncome = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__']
-          @medianSingleFamilyHome = data['demographics']['response']['pages']['page'][0]['tables']['table']['data']['attribute'][1]['values']['city']['value']['__content__']
-
-
-          singleFemales = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][2]['values']['city']['value']['__content__']
-          @singleFemales = singleFemales.to_f * 100
-
-          singleMales = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__']
-          @singleMales = singleMales.to_f * 100
-
-
-          homesWithKids = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][4]['values']['city']['value']['__content__']
-          @homesWithKids = homesWithKids.to_f * 100
-
-          owners = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__']
-          @owners = owners.to_f * 100
-
-          renters = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__']
-          @renters = renters.to_f * 100
-
-          @medianAge = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['city']['value']
-
-        rescue
-        end
-
-    @googleMapURL = "https://maps.google.com/maps?q=#{@latitude}+#{@longitude}+(#{@city})"
-
-
-    render 'results'
+      #render 'results'
+    end
 
   end
 
