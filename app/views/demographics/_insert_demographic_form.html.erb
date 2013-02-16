@@ -1,5 +1,5 @@
 <%= form_for (Demographic.new) do |f| %>
-  <%= f.hidden_field :state, :value => @stat %>
+  <%= f.hidden_field :state, :value => @state %>
   <%= f.hidden_field :city, :value => @city %>
   <%= f.hidden_field :household_income, :value => @medianHouseholdIncome %>
   <%= f.hidden_field :single_family_home, :value => @medianSingleFamilyHome %>

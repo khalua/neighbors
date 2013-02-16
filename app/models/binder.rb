@@ -11,4 +11,5 @@
 class Binder < ActiveRecord::Base
   attr_accessible :name
   has_many  :demographics
+  belongs_to  :people
 end

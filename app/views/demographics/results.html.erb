@@ -23,5 +23,5 @@ Renters: <%= number_to_percentage(@renters, :precision => 2) || "No data"  %><br
 
 
   <% if @medianHouseholdIncome.present? %>
-    <%= render :partial => "form" %>
+    <%= render :partial => "insert_demographic_form" %>
   <% end %>
