@@ -1,22 +1,19 @@
-  State: <%= @demographic["state"] %><br>
-  City: <%= @demographic["city"] %><br>
-  Median Household Income: <%= number_to_currency(@demographic["medianHouseholdIncome"]) || "No data" %><br>
-  Median Single Family Home: <%= number_to_currency(@demographic["medianSingleFamilyHome"]) || "No data"  %><br>
-  Single Males: <%= number_to_percentage(@demographic["singleMales"], :precision => 2) || "No data"  %><br>
-  Single Females: <%= number_to_percentage(@demographic["singleFemales"], :precision => 2) || "No data" %><br>
-  Median Age: <%= @demographic["medianAge"] || "No data" %><br>
-  Homes with kids:  <%= number_to_percentage(@demographic["homesWithKids"], :precision => 2) || "No data"  %><br>
-  Owners: <%= number_to_percentage(@demographic["owners"], :precision => 2) || "No data"  %><br>
-  Renters: <%= number_to_percentage(@demographic["renters"], :precision => 2) || "No data"  %><br>
+  State: <%= @demographic.state %><br>
+  City: <%= @demographic.city %><br>
+  Avg household income: <%= number_to_currency(@demographic.household_income, :precision => 0 ) || "No data" %><br>
+  Avg single family home: <%= number_to_currency(@demographic.single_family_home, :precision => 0) || "No data"  %><br>
+  Single Males: <%= number_to_percentage(@demographic.single_males, :precision => 2) || "No data"  %><br>
+  Single Females: <%= number_to_percentage(@demographic.single_females, :precision => 2) || "No data" %><br>
+  Median Age: <%= @demographic.median_age || "No data" %><br>
+  Homes with kids:  <%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %><br>
+  Owners: <%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %><br>
+  Renters: <%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %><br>
 
-  <%= link_to("Map Link", @googleMapURL) %>
-
-
-
-  <iframe width="425" height="350" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic["latitude"] %>+<%= @demographic["longitude"] %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic["latitude"] %>,<%= @demographic["longitude"] %>&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=<%= @demographic["latitude"] %>+<%= @demographic["longitude"] %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic["latitude"] %>,<%= @demographic["longitude"] %>&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+  <%#= link_to("Map Link", @googleMapURL) %>
 
 
-    <% if @demographic["medianHouseholdIncome"].present? %>
-      <%= render :partial => "insert_demographic_form" %>
-    <% end %>
+  <iframe width="425" height="350" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+
+
 
