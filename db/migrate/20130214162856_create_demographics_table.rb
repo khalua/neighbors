@@ -1,6 +1,6 @@
 class CreateDemographicsTable < ActiveRecord::Migration
   def change
-    create_table :binder do |t|
+    create_table :demographics do |t|
       t.string  :state
       t.string  :city
       t.float   :household_income
@@ -11,6 +11,9 @@ class CreateDemographicsTable < ActiveRecord::Migration
       t.float   :homes_with_kids
       t.float   :owners
       t.float   :renters
+      t.float   :latitude
+      t.float   :longitude
+      t.integer :binder_id
       t.timestamps
     end
   end

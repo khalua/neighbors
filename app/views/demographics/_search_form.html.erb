@@ -1,0 +1,14 @@
+<%= form_tag('/query', :method => 'get') do %>
+  State: <%= text_field_tag 'state' %>
+  City:  <%= text_field_tag 'city' %>
+  <%= submit_tag 'Go' %>
+<% end %>
+
+
+
+<!-- <form method='get' action='/query'>
+  State:<input type='text' name='state' autofocus>
+  City: <input type='text' name='city'>
+  <button>Go</button>
+</form>
+</div> -->

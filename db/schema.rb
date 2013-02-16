@@ -11,9 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216021417) do
+ActiveRecord::Schema.define(:version => 20130216030755) do
 
-  create_table "binder", :force => true do |t|
+  create_table "binders", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "demographics", :force => true do |t|
     t.string   "state"
     t.string   "city"
     t.float    "household_income"
@@ -24,6 +30,9 @@ ActiveRecord::Schema.define(:version => 20130216021417) do
     t.float    "homes_with_kids"
     t.float    "owners"
     t.float    "renters"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "binder_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

@@ -2,12 +2,28 @@ class DemographicsController < ApplicationController
   def search
   end
 
+  def index
+    @demographics = Demographic.all
+  end
+
+  def new
+    @demographic = Demographic.new
+  end
+
+  def create
+    demographic = Demographic.create(params[:demographic])
+    redirect_to(demographic)
+  end
+
+  def show
+    @demographic = Demographic.find(params[:id])
+  end
+
   def query
     state = params[:state].split.join
     city = params[:city].split.join
     key = ENV['ZILLOW']
     data = HTTParty.get("http://www.zillow.com/webservice/GetDemographics.htm?zws-id=#{key}&state=#{state}&city=#{city}").parsed_response
-
 
     begin
       @state = data['demographics']['response']['region']['state']
@@ -36,7 +52,6 @@ class DemographicsController < ApplicationController
       @renters = renters.to_f * 100
 
       @medianAge = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['city']['value']
-
 
     rescue
     end

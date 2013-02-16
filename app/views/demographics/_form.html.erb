@@ -1,14 +1,16 @@
-<%= form_tag('/query', :method => 'get') do %>
-  State: <%= text_field_tag 'state' %>
-  City:  <%= text_field_tag 'city' %>
-  <%= submit_tag 'Go' %>
+<%= form_for (Demographic.new) do |f| %>
+  <%= f.hidden_field :state, :value => @stat %>
+  <%= f.hidden_field :city, :value => @city %>
+  <%= f.hidden_field :household_income, :value => @medianHouseholdIncome %>
+  <%= f.hidden_field :single_family_home, :value => @medianSingleFamilyHome %>
+  <%= f.hidden_field :single_males, :value => @singleMales %>
+  <%= f.hidden_field :single_females, :value => @singleFemales %>
+  <%= f.hidden_field :median_age, :value => @medianAge %>
+  <%= f.hidden_field :homes_with_kids, :value => @homesWithKids %>
+  <%= f.hidden_field :owners, :value => @owners %>
+  <%= f.hidden_field :renters, :value => @renters %>
+  <%= f.hidden_field :latitude, :value => @latitude %>
+  <%= f.hidden_field :longitude, :value => @longitude %>
+  <%= f.submit %>
+
 <% end %>
-
-
-
-<!-- <form method='get' action='/query'>
-  State:<input type='text' name='state' autofocus>
-  City: <input type='text' name='city'>
-  <button>Go</button>
-</form>
-</div> -->
