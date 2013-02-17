@@ -28,7 +28,7 @@ begin
       d["renters"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
 rescue
 end
-      if d["city"].present?
+      if d["singleMales"].present?
       Demographic.create( :state => d["state"], :city => d["city"], :latitude => d["latitude"], :longitude => d["longitude"], :household_income => d["medianHouseholdIncome"], :single_family_home => d["medianSingleFamilyHome"], :single_males => d["singleMales"], :single_females => d["singleFemales"], :median_age => d["medianAge"], :homes_with_kids => d["homesWithKids"], :owners => d["owners"], :renters => d["renters"])
       end
 
@@ -53,9 +53,6 @@ end
 
   def show
     @demographic = Demographic.find(params[:id])
-  end
-
-  def query
   end
 
   def results

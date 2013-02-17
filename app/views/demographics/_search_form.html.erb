@@ -58,8 +58,26 @@ end
 
 %>
 
-<%= form_tag('/search', :method => 'get') do %>
-  State: <%= select_tag :state, options_for_select(us_states) %>
-  City:  <%= text_field_tag 'city' %>
-  <%= submit_tag 'Go' %>
-<% end %>
+<div class="row">
+  <div class="twelve columns">
+      <div class="radius panel">
+
+
+            <%= form_tag '/search', :method => 'get' do %>
+            State: <%= select_tag :state, options_for_select(us_states) %>
+            City:  <%= text_field_tag 'city' %>
+            <%= submit_tag 'Go' , :class => "postfix button expand" %>
+            <% end %>
+
+
+
+
+      </div>
+</div>
+</div>
+
+
+
+
+
+
