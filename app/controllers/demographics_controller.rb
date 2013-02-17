@@ -41,7 +41,7 @@ end
   end
 
   def index
-    @demographics = Demographic.order("city")
+    @demographics = Demographic.all :conditions =>
   end
 
   def new
@@ -57,8 +57,14 @@ end
     @binder = Demographic.find(params[:id])
   end
 
+  def update
+    demographic = Demographic.find(params[:id])
+    demographic.update_attributes(params[:demographic])
+    redirect_to(demographics_path)
+  end
+
   def show
-    @demographic = Demographic.find(params[:id])
+    @demographic = Demographic.find(params[:id]) #don's show sorry. that makes no sense
   end
 
   def results

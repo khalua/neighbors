@@ -21,6 +21,11 @@
             </h5><% if @demographic.city == "Sorry" %>
               <a class="radius button" href="/">Search again</a>
               <% else %>
+                <%= form_for @demographic do |f| %>
+                  <%= f.label :note %>
+                  <%= f.text_field  :note %>
+                  <%= f.submit "Add note...", :class => "radius button" %>
+                <% end %>
               <a class="radius button" href="#">Add to binder</a>
               <% end %>
           </div>
