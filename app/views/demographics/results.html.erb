@@ -10,23 +10,21 @@
           <div class="panel">
             <h4 class="hide-for-small"> <%= @demographic.city %>,  <%= @demographic.state %><hr/></h4>
             <h5 class="subheader">
-              Avg household income: <%= number_to_currency(@demographic.household_income, :precision => 0 ) || "No data" %><br>
-              Avg value of single family home: <%= number_to_currency(@demographic.single_family_home, :precision => 0) || "No data"  %><br>
-              Single Males: <%= number_to_percentage(@demographic.single_males, :precision => 2) || "No data"  %><br>
-              Single Females: <%= number_to_percentage(@demographic.single_females, :precision => 2) || "No data" %><br>
-              Median Age: <%= @demographic.median_age || "No data" %><br>
-              Homes with kids:  <%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %><br>
-              Owners: <%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %><br>
-              Renters: <%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %><br>
+              Avg household income: <strong><%= number_to_currency(@demographic.household_income, :precision => 0 ) || "No data" %></strong><br>
+              Avg value of single family home: <strong><%= number_to_currency(@demographic.single_family_home, :precision => 0) || "No data"  %></strong><br>
+              Single Males: <strong><%= number_to_percentage(@demographic.single_males, :precision => 2) || "No data"  %></strong><br>
+              Single Females: <strong><%= number_to_percentage(@demographic.single_females, :precision => 2) || "No data" %></strong><br>
+              Median Age: <strong><%= @demographic.median_age || "No data" %></strong><br>
+              Homes with kids:  <strong><%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %></strong><br>
+              Owners: <strong><%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %></strong><br>
+              Renters: <strong><%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %></strong><br>
             </h5><% if @demographic.city == "Sorry" %>
               <a class="radius button" href="/">Search again</a>
               <% else %>
                 <%= form_for @demographic do |f| %>
-                  <%= f.label :note %>
+                  <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
                   <%= f.text_field  :note %>
-                  <%= f.submit "Add note...", :class => "radius button" %>
                 <% end %>
-              <a class="radius button" href="#">Add to binder</a>
               <% end %>
           </div>
         </div>
@@ -48,8 +46,9 @@
               <div class="six mobile-two columns">
                 <div class="panel">
                   <h5>National stats</h5>
-                <h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
-                <a href="#" class="small button">BUTTON TIME!</a>
+                <h6 class="subheader">
+                <%= render :partial => "national_stats" %>
+                </h6>
                 </div>
               </div>
 

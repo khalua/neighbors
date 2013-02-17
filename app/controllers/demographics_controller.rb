@@ -11,7 +11,6 @@ class DemographicsController < ApplicationController
     else
       key = ENV['ZILLOW']
       data = HTTParty.get("http://www.zillow.com/webservice/GetDemographics.htm?zws-id=#{key}&state=#{state}&city=#{city}").parsed_response
-
       d = Hash.new
 begin
       d["state"] = data['demographics']['response']['region']['state']
@@ -41,7 +40,7 @@ end
   end
 
   def index
-    @demographics = Demographic.all :conditions =>
+    @demographics = Demographic.all
   end
 
   def new
