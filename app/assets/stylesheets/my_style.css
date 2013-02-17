@@ -1,9 +1,9 @@
 body {
-  background: #fff url('carbon_fibre.png')
+  background: #fff url('grey.png')
 }
 
 p, li {
-  color: white;
+  color: black;
 }
 
 ul {
@@ -17,7 +17,11 @@ list-style-type: none;
   background-color: black;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
   background-color: #900707;
 }
 
+footer {
+  margin-top: 300px;
+}

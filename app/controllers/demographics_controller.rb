@@ -29,10 +29,12 @@ begin
 rescue
 end
       if d["singleMales"].present?
-      Demographic.create( :state => d["state"], :city => d["city"], :latitude => d["latitude"], :longitude => d["longitude"], :household_income => d["medianHouseholdIncome"], :single_family_home => d["medianSingleFamilyHome"], :single_males => d["singleMales"], :single_females => d["singleFemales"], :median_age => d["medianAge"], :homes_with_kids => d["homesWithKids"], :owners => d["owners"], :renters => d["renters"])
+         Demographic.create( :state => d["state"], :city => d["city"], :latitude => d["latitude"], :longitude => d["longitude"], :household_income => d["medianHouseholdIncome"], :single_family_home => d["medianSingleFamilyHome"], :single_males => d["singleMales"], :single_females => d["singleFemales"], :median_age => d["medianAge"], :homes_with_kids => d["homesWithKids"], :owners => d["owners"], :renters => d["renters"])
+         @demographic = Demographic.last
+       else
+        @demographic = Demographic.where( :city => "Sorry").first
       end
 
-      @demographic = Demographic.last
       end
 
       render 'results'
@@ -49,6 +51,10 @@ end
   def create
     demographic = Demographic.create(params[:demographic])
     redirect_to(demographic)
+  end
+
+  def edit
+    @binder = Demographic.find(params[:id])
   end
 
   def show
