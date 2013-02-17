@@ -31,4 +31,11 @@ class BindersController < ApplicationController
     binder.delete
     redirect_to(binders_path)
   end
+
+  def add_to_binder
+    binder = Binder.find(params[:id])
+    demographic = params[:demographic_id]
+    binder.demographics << demographic
+    redirect_to(binders)
+  end
 end

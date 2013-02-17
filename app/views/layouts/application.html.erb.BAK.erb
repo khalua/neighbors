@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neighbors</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <nav>
+      <%= link_to("Home", root_path) %>
+      <%= link_to("Cached cities", demographics_path ) %>
+      <%= link_to("View binders", binders_path ) %>
+    </nav>
+  </header>
+
+<%= yield %>
+
+</body>
+</html>
