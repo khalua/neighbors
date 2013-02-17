@@ -11,16 +11,28 @@
 
 <!-- End Header -->
 
-<% Demographic.all.each do |data| %>
+<% @demographics.each do |data| %>
 <div class="row">
-  <div class="nine columns push-two">
-   <ul>
+  <div class="two columns"></div>
+  <div class="four columns">
      <p><strong><%= data.city %>, <%= data.state %></strong></p>
-     <li>Avg household income: <%= number_to_currency(data.household_income, :precision => 0) %></li>
-     <li>Single Males: <%= number_to_percentage(data.single_males, :precision => 2) %></li>
-     <li>Single Females: <%= number_to_percentage(data.single_females, :precision => 2) %></li>
-   </ul>
- </div>
+     <ul>
+     <li>Avg household income: <strong><%= number_to_currency(data.household_income, :precision => 0) %></strong></li>
+     <li>Median Age: <strong><%= data.median_age %></strong></li>
+     <li>Homes with kids: <strong><%= number_to_percentage(data.homes_with_kids, :precision => 2) %></strong></li>
+    <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong> / Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
+    </ul>
+   </div>
+ <div class="four columns">
+    <p>&nbsp;</p>
+    <ul>
+     <li>Avg value of single family home: <strong><%= number_to_currency(data.single_family_home, :precision => 0) %></strong> </li>
+    <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong></li>
+    <li>Single Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
+    <li>Owners: <strong><%= number_to_percentage(data.owners, :precision => 2) %></strong> / Renters: <strong><%= number_to_percentage(data.renters, :precision => 2) %></strong></li>
+     </ul>
+</div>
+ <div class="two columns"></div>
 </div>
 <!-- End Feed Entry -->
 <hr />

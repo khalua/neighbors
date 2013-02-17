@@ -61,7 +61,7 @@ end
             <%= form_tag '/search', :method => 'get', :class => 'custom' do %>
             State: <%= select_tag :state, options_for_select(us_states) %>
             City:  <%= text_field_tag 'city' %>
-            <%= submit_tag 'Go' , :class => "postfix button expand" %>
+            <%= submit_tag 'Search' , :class => "postfix button" %>
             <% end %>
 
 

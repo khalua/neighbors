@@ -14,6 +14,7 @@ class BindersController < ApplicationController
 
   def show
     @binder = Binder.find(params[:id])
+    @demographics = @binder.demographics
   end
 
   def edit

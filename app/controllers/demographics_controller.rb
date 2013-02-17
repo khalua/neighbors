@@ -33,7 +33,7 @@ end
        else
         @demographic = Demographic.where( :city => "Sorry").first
       end
-
+         @binder = Binder.new
       end
 
       render 'results'

@@ -3,7 +3,7 @@
       <div class="row">
         <div class="six columns">
 
-          <iframe width="442" height="340" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
+          <iframe width="442" height="390" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
         </div>
 
         <div class="six columns">
@@ -18,50 +18,69 @@
               Homes with kids:  <strong><%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %></strong><br>
               Owners: <strong><%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %></strong><br>
               Renters: <strong><%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %></strong><br>
-            </h5><% if @demographic.city == "Sorry" %>
-              <a class="radius button" href="/">Search again</a>
-              <% else %>
-                <%= form_for @demographic do |f| %>
+             </h5>
+
+             <% if @demographic.city == "Sorry" %>
+               <a class="radius button" href="/">Search again</a>
+             <% else %>
+               <%= form_for @demographic do |f| %>
                   <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
+                  <%= f.select :binder_id, Binder.all.map {|binder| [binder.name, binder.id]}, :include_blank => true, :prompt => "Select Binder" %>
+
                   <%= f.text_field  :note %>
+
+
+
                 <% end %>
               <% end %>
+
+
+
           </div>
         </div>
       </div>
 
 
-          <div class="row">
-           <div class="twelve columns">
-              <div class="panel">
-                <h5>Search again</h5>
-                <%= render :partial => "search_form" %>
-              </div>
-            </div>
-          </div>
+      <div class="row">
+       <div class="six columns">
+        <div class="panel">
+          <h5>Search again</h5>
+          <%= render :partial => "search_form" %>
+        </div>
+      </div>
 
+      <div class="six columns">
+        <div class="panel">
+          <h5>Cities in your binder</h5>
+          <h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
+          <a href="#" class="small button">BUTTON TIME!</a>
+        </div>
+      </div>
 
+    </div>
 
-                <div class="row">
-              <div class="six mobile-two columns">
-                <div class="panel">
-                  <h5>National stats</h5>
-                <h6 class="subheader">
-                <%= render :partial => "national_stats" %>
-                </h6>
-                </div>
-              </div>
+    <div class="row">
+      <div class="six columns">
+        <div class="panel">
+          <h5>National stats</h5>
+          <h6 class="subheader">
+            <%= render :partial => "national_stats" %>
+          </h6>
+        </div>
+      </div>
 
-              <div class="six mobile-two columns">
-                <div class="panel">
-                  <h5>Items in your binder</h5>
-                <h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
-                <a href="#" class="small button">BUTTON TIME!</a>
-                </div>
-              </div>
-          </div>
+      <div class="six columns">
+        <div class="panel">
+          <h5><%= @demographic.city %> compared to nation</h5>
+          <h6 class="subheader">
+            <%= render :partial => "national_stats" %>
+          </h6>
+        </div>
+      </div>
 
-      <!-- End Header Content -->
+    </div>
+
+    <!-- End Header Content -->
 
 
 

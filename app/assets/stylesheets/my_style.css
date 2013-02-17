@@ -4,6 +4,7 @@ body {
 
 p, li {
   color: black;
+  line-height: 15px;
 }
 
 ul {
