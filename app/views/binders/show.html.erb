@@ -1,12 +1,28 @@
-Binder name: <%= @binder.name %><br>
-Binder description: <%= @binder.description %><br>
+<!-- Header  -->
 
-<%= link_to 'Edit', edit_binder_path(@binder) %>
-<hr>
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <h1>Binder name: <%= @binder.name %><br></h1>
+      <h3><%= @binder.description %></h3>
+    </div>
+  </div>
+</div>
+
+<!-- End Header -->
 
 <% Demographic.all.each do |data| %>
-  <%= data.state %><br>
-  <%= data.city %><br>
-  <%= number_to_currency(data.household_income, :precision => 0) %><br>
-
+<div class="row">
+  <div class="nine columns push-two">
+   <ul>
+     <p><strong><%= data.city %>, <%= data.state %></strong></p>
+     <li>Avg household income: <%= number_to_currency(data.household_income, :precision => 0) %></li>
+     <li>Single Males: <%= number_to_percentage(data.single_males, :precision => 2) %></li>
+     <li>Single Females: <%= number_to_percentage(data.single_females, :precision => 2) %></li>
+   </ul>
+ </div>
+</div>
+<!-- End Feed Entry -->
+<hr />
 <% end %>
+

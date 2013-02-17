@@ -1,0 +1,23 @@
+body {
+  background: #fff url('carbon_fibre.png')
+}
+
+p, li {
+  color: white;
+}
+
+ul {
+list-style-type: none;
+}
+.nav-bar {
+  background: #900707;
+}
+
+.button {
+  background-color: black;
+}
+
+.button:hover {
+  background-color: #900707;
+}
+
