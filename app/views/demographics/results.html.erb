@@ -2,7 +2,7 @@
 
       <div class="row">
         <div class="six columns">
-          <iframe width="442" height="325" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
+          <iframe width="442" height="340" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
         </div>
 
         <div class="six columns">
@@ -17,15 +17,10 @@
               Homes with kids:  <%= number_to_percentage(@demographic.homes_with_kids, :precision => 2) || "No data"  %><br>
               Owners: <%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %><br>
               Renters: <%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %><br>
-
             </h5>
+            <a class="radius button" href="#">Add to binder</a>
           </div>
         </div>
-        <div class="six columns">
-              <div class="panel">
-              <h5>Add to binder</h5>
-            </div>
-            </div>
       </div>
 
 

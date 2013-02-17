@@ -39,7 +39,7 @@ end
   end
 
   def index
-    @demographics = Demographic.all
+    @demographics = Demographic.order("city")
   end
 
   def new
