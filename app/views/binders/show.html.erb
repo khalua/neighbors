@@ -1,10 +1,20 @@
 <!-- Header  -->
 
 <div class="row">
-  <div class="twelve columns">
+  <div class="ten columns">
     <div class="panel">
       <h1>Binder name: <%= @binder.name %><br></h1>
       <h3><%= @binder.description %></h3>
+    </div>
+  </div>
+  <div class="two columns">
+    <div class="panel">
+      <h5>Binder:</h5>
+      <%= link_to 'Edit', edit_binder_path %>
+      <br>
+
+      <%= link_to 'Delete', @binder, :method => :delete, :confirm => "You sure?" %><br>
+
     </div>
   </div>
 </div>
@@ -12,29 +22,33 @@
 <!-- End Header -->
 
 <% @demographics.each do |data| %>
-<div class="row">
-  <div class="two columns"></div>
+  <div class="row">
+  <div class="one columns"></div>
   <div class="four columns">
-     <p><strong><%= data.city %>, <%= data.state %></strong></p>
-     <ul>
-     <li>Avg household income: <strong><%= number_to_currency(data.household_income, :precision => 0) %></strong></li>
-     <li>Median Age: <strong><%= data.median_age %></strong></li>
-     <li>Homes with kids: <strong><%= number_to_percentage(data.homes_with_kids, :precision => 2) %></strong></li>
-    <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong> / Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
-    </ul>
-   </div>
- <div class="four columns">
-    <p>&nbsp;</p>
-    <ul>
-     <li>Avg value of single family home: <strong><%= number_to_currency(data.single_family_home, :precision => 0) %></strong> </li>
-    <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong></li>
-    <li>Single Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
-    <li>Owners: <strong><%= number_to_percentage(data.owners, :precision => 2) %></strong> / Renters: <strong><%= number_to_percentage(data.renters, :precision => 2) %></strong></li>
-     </ul>
-</div>
- <div class="two columns"></div>
-</div>
-<!-- End Feed Entry -->
-<hr />
-<% end %>
+  <p><strong><%= link_to(data.city,data) %>, <%= data.state %></strong></p>
+  <ul>
+  <li>Avg household income: <strong><%= number_to_currency(data.household_income, :precision => 0) %></strong></li>
+  <li>Median Age: <strong><%= data.median_age %></strong></li>
+  <li>Homes with kids: <strong><%= number_to_percentage(data.homes_with_kids, :precision => 2) %></strong></li>
+  <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong> / Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
+  </ul>
+  </div>
+  <div class="four columns">
+  <p>&nbsp;</p>
+  <ul>
+  <li>Avg value of single family home: <strong><%= number_to_currency(data.single_family_home, :precision => 0) %></strong> </li>
+  <li>Single Males: <strong><%= number_to_percentage(data.single_males, :precision => 2) %></strong></li>
+  <li>Single Females: <strong><%= number_to_percentage(data.single_females, :precision => 2) %></strong></li>
+  <li>Owners: <strong><%= number_to_percentage(data.owners, :precision => 2) %></strong> / Renters: <strong><%= number_to_percentage(data.renters, :precision => 2) %></strong></li>
+  </ul>
+  </div>
+  <div class="three columns"></div>
+  <% if data.note.present? %>
+  <p>Your note:</p>
+  <p><%= data.note %></p>
+  <% end %>
+  </div>
+  <!-- End Feed Entry -->
+  <hr />
+  <% end %>
 
