@@ -1,5 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT);
+
 body {
-  background: #fff url('grey.png')
+  background: #fff url('grey.png');
 }
 
 p, li {
@@ -21,6 +23,16 @@ list-style-type: none;
 .button:hover,
 .button:focus {
   background-color: #900707;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+  font-weight: bold;
 }
 
 footer {

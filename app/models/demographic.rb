@@ -15,13 +15,12 @@
 #  renters            :float
 #  latitude           :float
 #  longitude          :float
-#  binder_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  note               :text
 #
 
 class Demographic < ActiveRecord::Base
-  attr_accessible :state, :city, :household_income, :single_family_home, :single_males, :single_females, :median_age, :homes_with_kids, :owners, :renters, :latitude, :longitude, :binder_id, :note
+  attr_accessible :state, :city, :household_income, :single_family_home, :single_males, :single_females, :median_age, :homes_with_kids, :owners, :renters, :latitude, :longitude, :note, :binder_ids
   has_and_belongs_to_many  :binders
 end

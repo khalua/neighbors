@@ -13,30 +13,30 @@ class DemographicsController < ApplicationController
       data = HTTParty.get("http://www.zillow.com/webservice/GetDemographics.htm?zws-id=#{key}&state=#{state}&city=#{city}").parsed_response
       #binding.pry
       d = Hash.new
-begin
-      d["state"] = data['demographics']['response']['region']['state']
-      d["city"] = data['demographics']['response']['region']['city']
-      d["latitude"] = data['demographics']['response']['region']['latitude'].to_f
-      d["longitude"] = data['demographics']['response']['region']['longitude'].to_f
-      d["medianHouseholdIncome"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_f
-      d["medianSingleFamilyHome"] = data['demographics']['response']['pages']['page'][0]['tables']['table']['data']['attribute'][1]['values']['city']['value']['__content__'].to_f
-      d["singleMales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
-      d["singleFemales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][2]['values']['city']['value']['__content__'].to_f * 100
-      d["medianAge"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['city']['value'].to_i
-      d["homesWithKids"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][4]['values']['city']['value']['__content__'].to_f * 100
-      d["owners"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_f * 100
-      d["renters"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
-rescue
-end
+      begin
+        d["state"] = data['demographics']['response']['region']['state']
+        d["city"] = data['demographics']['response']['region']['city']
+        d["latitude"] = data['demographics']['response']['region']['latitude'].to_f
+        d["longitude"] = data['demographics']['response']['region']['longitude'].to_f
+        d["medianHouseholdIncome"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_f
+        d["medianSingleFamilyHome"] = data['demographics']['response']['pages']['page'][0]['tables']['table']['data']['attribute'][1]['values']['city']['value']['__content__'].to_f
+        d["singleMales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
+        d["singleFemales"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][2]['values']['city']['value']['__content__'].to_f * 100
+        d["medianAge"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][3]['values']['city']['value'].to_i
+        d["homesWithKids"] = data['demographics']['response']['pages']['page'][2]['tables']['table'][0]['data']['attribute'][4]['values']['city']['value']['__content__'].to_f * 100
+        d["owners"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][0]['values']['city']['value']['__content__'].to_f * 100
+        d["renters"] = data['demographics']['response']['pages']['page'][1]['tables']['table'][0]['data']['attribute'][1]['values']['city']['value']['__content__'].to_f * 100
+      rescue
+      end
       if d["singleMales"].present?
          Demographic.create( :state => d["state"], :city => d["city"], :latitude => d["latitude"], :longitude => d["longitude"], :household_income => d["medianHouseholdIncome"], :single_family_home => d["medianSingleFamilyHome"], :single_males => d["singleMales"], :single_females => d["singleFemales"], :median_age => d["medianAge"], :homes_with_kids => d["homesWithKids"], :owners => d["owners"], :renters => d["renters"])
          @demographic = Demographic.last
        else
-        @demographic = Demographic.where( :city => "Sorry").first
+         @demographic = Demographic.where( :city => "Sorry").first
       end
-         @binder = Binder.new
-      end
-
+        #@binder = Binder.update
+    end
+        @usa_data = Demographic.where(:city => 'USA', :state => 'USA').first
       render 'results'
   end
 
@@ -69,4 +69,5 @@ end
 
   def results
   end
+
 end

@@ -1,0 +1,55 @@
+Avg household income:
+<% if @demographic.household_income > @usa_data.household_income %>
+ <span class="green"><%= number_to_currency(@demographic.household_income - @usa_data.household_income, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_currency(@usa_data.household_income - @demographic.household_income, :precision => 0)  %> below</span><br>
+<% end %>
+
+Avg value of single family home:
+<% if @demographic.single_family_home > @usa_data.single_family_home %>
+ <span class="green"><%= number_to_currency(@demographic.single_family_home - @usa_data.single_family_home, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_currency(@usa_data.single_family_home - @demographic.single_family_home, :precision => 0)  %> below</span><br>
+<% end %>
+
+Single males:
+<% if @demographic.single_males > @usa_data.single_males %>
+ <span class="green"><%= number_to_percentage(@demographic.single_males - @usa_data.single_males, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_percentage(@usa_data.single_males - @demographic.single_males, :precision => 0)  %> below</span><br>
+<% end %>
+
+Single females:
+<% if @demographic.single_females > @usa_data.single_females %>
+ <span class="green"><%= number_to_percentage(@demographic.single_females - @usa_data.single_females, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_percentage(@usa_data.single_females - @demographic.single_females, :precision => 0)  %> below</span><br>
+<% end %>
+
+Median age:
+<% if @demographic.median_age > @usa_data.median_age %>
+ <span class="green"><%= @demographic.median_age - @usa_data.median_age  %> year(s) above</span><br>
+ <% else %>
+ <span class="red"><%= @usa_data.median_age - @demographic.median_age  %> year(s) below</span><br>
+<% end %>
+
+Homes with kids:
+<% if @demographic.homes_with_kids > @usa_data.homes_with_kids %>
+ <span class="green"><%= number_to_percentage(@demographic.homes_with_kids - @usa_data.homes_with_kids, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_percentage(@usa_data.homes_with_kids - @demographic.homes_with_kids, :precision => 0)  %> below</span><br>
+<% end %>
+
+Owners:
+<% if @demographic.owners > @usa_data.owners %>
+ <span class="green"><%= number_to_percentage(@demographic.owners - @usa_data.owners, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_percentage(@usa_data.owners - @demographic.owners, :precision => 0)  %> below</span><br>
+<% end %>
+
+Renters:
+<% if @demographic.renters > @usa_data.renters %>
+ <span class="green"><%= number_to_percentage(@demographic.renters - @usa_data.renters, :precision => 0)  %> above</span><br>
+ <% else %>
+ <span class="red"><%= number_to_percentage(@usa_data.renters - @demographic.renters, :precision => 0)  %> below</span><br>
+<% end %>

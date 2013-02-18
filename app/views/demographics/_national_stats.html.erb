@@ -1,8 +1,9 @@
-Median household income <strong>$44,512</strong><br>
-median single family home <strong>$158,400</strong><br>
-single males <strong>15%</strong><br>
-single females <strong>12%</strong><br>
-median age <strong>36</strong><br>
-homes with kids <strong>31%</strong><br>
-renters <strong>34%</strong><br>
-owners <strong>66%</strong><br>
+Avg household income: <strong><%= number_to_currency(@usa_data.household_income, :precision => 0) %></strong><br>
+Avg single family home: <strong><%= number_to_currency(@usa_data.single_family_home, :precision => 0) %></strong><br>
+Single Males: <strong><%= number_to_percentage(@usa_data.single_males, :precision => 2) %></strong><br>
+Single Females: <strong><%= number_to_percentage(@usa_data.single_females, :precision => 2) %></strong><br>
+Median Age: <strong><%= @usa_data.median_age %></strong><br>
+Homes with kids: <strong><%= number_to_percentage(@usa_data.homes_with_kids, :precision => 2) %></strong><br>
+Owners: <strong><%= number_to_percentage(@usa_data.owners, :precision => 0) %></strong><br>
+Renters: <strong><%= number_to_percentage(@usa_data.renters, :precision => 0) %></strong><br>
+
