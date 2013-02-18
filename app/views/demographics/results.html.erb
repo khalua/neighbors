@@ -23,7 +23,7 @@
              <% if @demographic.city == "Sorry" %>
                <a class="radius button" href="/">Search again</a>
              <% else %>
-               <%= form_for @demographic do |f| %>
+               <%= form_for @demographic, :html => {:class => 'custom'}  do |f| %>
                   <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
                   <%= f.select :binder_id, Binder.all.map {|binder| [binder.name, binder.id]}, :include_blank => true, :prompt => "Select Binder" %>
 
