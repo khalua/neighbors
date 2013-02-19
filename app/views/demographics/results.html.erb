@@ -1,12 +1,12 @@
       <!-- Header Content -->
 
       <div class="row">
-        <div class="six columns">
+        <div class="seven columns">
 
-          <iframe width="442" height="430" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
+          <iframe width="520" height="358" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= @demographic.latitude %>+<%= @demographic.longitude %>&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=<%= @demographic.latitude %>,<%= @demographic.longitude %>&amp;output=embed"></iframe>
         </div>
 
-        <div class="six columns">
+        <div class="five columns">
           <div class="panel">
             <h4 class="hide-for-small"> <%= @demographic.city %>,  <%= @demographic.state %><hr/></h4>
             <h5 class="subheader">
@@ -19,16 +19,14 @@
               Owners: <strong><%= number_to_percentage(@demographic.owners, :precision => 2) || "No data"  %></strong><br>
               Renters: <strong><%= number_to_percentage(@demographic.renters, :precision => 2) || "No data"  %></strong><br>
             </h5>
+            <hr/>
 
-            <% if @demographic.city == "Sorry" %>
-            <a class="radius button" href="/">Search again</a>
+             <% if @demographic.city == "Sorry" %>
+              <a class="radius button small" href="/">Search again</a>
             <% else %>
-            <%= form_for @demographic, :html => {:class => 'custom'}  do |f| %>
-            <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
-            <%= f.collection_select :binder_ids, Binder.all, :id, :name %>
-            <%= f.text_field  :note %>
+              <a href="#" class="radius button small" data-reveal-id="myModal">Add city to binder</a>
             <% end %>
-            <% end %>
+
           </div>
         </div>
       </div>
@@ -37,7 +35,7 @@
 
 
       <div class="row">
-        <div class="six columns">
+        <div class="seven columns">
           <div class="panel">
             <h6>National stats</h6>
             <h6 class="subheader">
@@ -48,7 +46,7 @@
 
 
 
-        <div class="six columns">
+        <div class="five columns">
           <div class="panel">
             <h6><%= @demographic.city %> compared to the nation</h6>
             <h6 class="subheader">
@@ -80,9 +78,13 @@
 <% end %>
       <!-- Create new binder -->
       <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
-        <h2>Awesome. I have it.</h2>
-        <p class="lead">Your couch.  It is mine.</p>
-        <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+        <h2>Add city to binder</h2>
+       <%= form_for @demographic, :html => {:class => 'custom'}  do |f| %>
+        <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
+        <%= f.collection_select :binder_ids, Binder.all, :id, :name %>
+        <%= f.text_field  :note %>
+        <% end %>
+
         <a class="close-reveal-modal">&#215;</a>
       </div>
 

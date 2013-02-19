@@ -1,7 +1,7 @@
 class DemographicsController < ApplicationController
 
   def start
-    @top_binder = Binder.find(4)
+    @binder = Binder.new
   end
 
   def search
@@ -42,7 +42,7 @@ class DemographicsController < ApplicationController
   end
 
   def index
-    @demographics = Demographic.all
+    @demographics = Demographic.order(:city)
   end
 
   def new

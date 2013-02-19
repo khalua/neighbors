@@ -9,7 +9,7 @@ class BindersController < ApplicationController
 
   def create
     binder = Binder.create(params[:binder])
-    redirect_to(binders_path)
+    redirect_to(root_path)
   end
 
   def show

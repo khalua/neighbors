@@ -12,6 +12,10 @@ header h1 {
   padding-top: 8px;
 }
 
+.panel.radius {
+  background-color: grey;
+}
+
 h4, h5 {
   color: white;
 }
