@@ -12,6 +12,9 @@ header h1 {
   padding-top: 8px;
 }
 
+h2 {
+    font-family: 'Rokkitt', serif;
+  }
 .panel.radius {
   background-color: grey;
 }

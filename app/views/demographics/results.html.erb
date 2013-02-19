@@ -80,9 +80,9 @@
       <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
         <h2>Add city to binder</h2>
        <%= form_for @demographic, :html => {:class => 'custom'}  do |f| %>
-        <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
         <%= f.collection_select :binder_ids, Binder.all, :id, :name %>
         <%= f.text_field  :note %>
+        <%= f.submit "Add city to binder with optional note...", :class => "radius button small" %><br><br>
         <% end %>
 
         <a class="close-reveal-modal">&#215;</a>
