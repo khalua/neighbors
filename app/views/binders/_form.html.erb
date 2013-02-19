@@ -7,8 +7,8 @@
 <h3>Selected cities will be in this binder</h3>
 
 <% Demographic.order(:city).each do |demographic| %>
-  <span><%= demographic.city %>, <%= demographic.state %></span>
-  <%= check_box_tag 'book[demographic_ids][]', demographic.id, demographic.in?(@binder.demographics) %><br>
+  <span class="white"><%= demographic.city %>, <%= demographic.state %></span>
+  <%= check_box_tag 'binder[demographic_ids][]', demographic.id, demographic.in?(@binder.demographics) %><br>
 <% end %>
 
 

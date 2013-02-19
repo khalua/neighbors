@@ -1,11 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT);
-
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
 
 body {
   background: #fff url('hexabump.png');
 }
 
 header h1 {
+  font-family: 'Rokkitt', serif;
+  font-size: 60px;
   color: white;
   line-height: 18px;
   padding-top: 8px;
@@ -57,6 +58,15 @@ list-style-type: none;
   color: green;
   font-weight: bold;
 }
+
+.white {
+  color: white;
+}
+
+.city_list {
+  font-size: 30px;
+}
+
 
 footer {
   margin-top: 300px;

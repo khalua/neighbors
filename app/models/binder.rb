@@ -10,7 +10,7 @@
 #
 
 class Binder < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :demographic_ids
   has_and_belongs_to_many  :demographics
   belongs_to  :people
 end
