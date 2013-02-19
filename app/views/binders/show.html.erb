@@ -4,18 +4,13 @@
   <div class="ten columns">
     <div class="panel">
       <h1>Binder name: <%= @binder.name %><br></h1>
-      <p><%= @binder.description %></p>
+      <h3><%= @binder.description %></h3>
     </div>
   </div>
   <div class="two columns">
-    <div class="panel">
-      <h5>Binder:</h5>
-      <%= link_to 'Edit', edit_binder_path %>
-      <br>
 
-      <%= link_to 'Delete', @binder, :method => :delete, :confirm => "You sure?" %><br>
-
-    </div>
+      <h4><%= link_to 'Edit', edit_binder_path %></h4>
+      <h4><%= link_to 'Delete', @binder, :method => :delete, :confirm => "You sure?" %></h4>
   </div>
 </div>
 
@@ -54,3 +49,38 @@
 <% end %>
 </ol>
 </div>
+
+
+
+<table class="twelve">
+  <thead>
+    <tr>
+      <th>City, State</th>
+      <th>Avg household income</th>
+      <th>Median age</th>
+      <th>Homes with kids</th>
+      <th>Single males</th>
+      <th>Single females</th>
+      <th>Avg value of single family home</th>
+      <th>Owners</th>
+      <th>Renters</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @demographics.each do |data| %>
+    <tr>
+      <td><%= link_to(data.city,data) %>, <%= data.state %></td>
+      <td><%= number_to_currency(data.household_income, :precision => 0) %></td>
+      <td><%= data.median_age %></td>
+      <td><%= number_to_percentage(data.homes_with_kids, :precision => 2) %></td>
+      <td><%= number_to_percentage(data.single_males, :precision => 2)%> </td>
+      <td><%= number_to_percentage(data.single_females, :precision => 2) %></td>
+      <td><%= number_to_currency(data.single_family_home, :precision => 0) %></td>
+      <td><%= number_to_percentage(data.owners, :precision => 2) %></td>
+      <td><%= number_to_percentage(data.renters, :precision => 2) %></td>
+      <td><%= data.note %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

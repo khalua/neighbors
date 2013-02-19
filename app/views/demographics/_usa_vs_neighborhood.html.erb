@@ -6,7 +6,7 @@ Avg household income:
 <% end %>
 
 Avg value of single family home:
-<% if @demographic.single_family_home > @usa_data.single_family_home %>
+  <% if @demographic.single_family_home > @usa_data.single_family_home %>
  <span class="green"><%= number_to_currency(@demographic.single_family_home - @usa_data.single_family_home, :precision => 0)  %> above</span><br>
  <% else %>
  <span class="red"><%= number_to_currency(@usa_data.single_family_home - @demographic.single_family_home, :precision => 0)  %> below</span><br>

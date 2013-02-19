@@ -61,11 +61,13 @@ class DemographicsController < ApplicationController
   def update
     demographic = Demographic.find(params[:id])
     demographic.update_attributes(params[:demographic])
-    redirect_to(demographics_path)
+    redirect_to(demographic)
   end
 
   def show
     @demographic = Demographic.find(params[:id]) #don's show sorry. that makes no sense
+    @usa_data = Demographic.where(:city => 'USA', :state => 'USA').first
+    render 'results'
   end
 
   def results

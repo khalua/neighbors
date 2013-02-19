@@ -2,7 +2,7 @@
   <div class="twelve columns">
     <div class="radius panel">
       <h2>Cached cities</h2>
-      <p>These cities are in our database. Click the hell out of them.</p>
+      <h3></h3>
     </div>
   </div>
 </div>
@@ -11,7 +11,7 @@
   <div class="one columns"></div>
   <div class="eleven columns">
 <% @demographics.each do |demographic| %>
-  <h5><%= link_to(demographic.city,demographic) %></h5>
+  <h5><%= link_to(demographic.city,demographic) %>, <%= demographic.state %></h5>
 <% end %>
 </div>
 
