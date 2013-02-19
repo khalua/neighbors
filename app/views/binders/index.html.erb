@@ -14,9 +14,12 @@
 </div>
 
 
-
-
-<% @binders.each do |binder| %>
-  <h4>Name:  <%= link_to(binder.name, binder) %></h4>
-  <h5>Description: <%= binder.description %></h5>
-<% end %>
+<div class="row">
+  <div class="one columns"></div>
+  <div class="eleven columns">
+    <% @binders.each do |binder| %>
+    <h4>Name:  <%= link_to(binder.name, binder) %></h4>
+    <h5>Description: <%= binder.description %></h5>
+    <% end %>
+  </div>
+</div>

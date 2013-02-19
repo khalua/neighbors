@@ -29,19 +29,17 @@
             <%= f.text_field  :note %>
             <% end %>
             <% end %>
-
-
-
           </div>
         </div>
       </div>
 
+<% if @demographic.household_income.present? %>
+
 
       <div class="row">
-
         <div class="six columns">
           <div class="panel">
-            <h5>National stats</h5>
+            <h6>National stats</h6>
             <h6 class="subheader">
               <%= render :partial => "national_stats" %>
             </h6>
@@ -52,14 +50,14 @@
 
         <div class="six columns">
           <div class="panel">
-            <h5><%= @demographic.city %> compared to the nation</h5>
+            <h6><%= @demographic.city %> compared to the nation</h6>
             <h6 class="subheader">
               <%= render :partial => "usa_vs_neighborhood" %>
             </h6>
           </div>
         </div>
       </div>
-
+<!--
       <div class="row">
         <div class="six columns">
           <div class="panel">
@@ -77,9 +75,9 @@
             <%= render :partial => "search_form" %>
           </div>
         </div>
+      </div> -->
 
-      </div>
-
+<% end %>
       <!-- Create new binder -->
       <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
         <h2>Awesome. I have it.</h2>

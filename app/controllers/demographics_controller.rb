@@ -1,6 +1,7 @@
 class DemographicsController < ApplicationController
 
   def start
+    @top_binder = Binder.find(4)
   end
 
   def search

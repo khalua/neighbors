@@ -1,12 +1,35 @@
 @import url(http://fonts.googleapis.com/css?family=Old+Standard+TT);
 
+
 body {
-  background: #fff url('grey.png');
+  background: #fff url('hexabump.png');
+}
+
+header h1 {
+  color: white;
+  line-height: 18px;
+  padding-top: 8px;
+}
+
+h4, h5 {
+  color: white;
+}
+
+.panel h4,h5 {
+  color: black;
+}
+
+h5 {
+  color:white;
 }
 
 p, li {
-  color: black;
+  color: white;
   line-height: 15px;
+}
+
+.demo li{
+  color: white;
 }
 
 ul {
